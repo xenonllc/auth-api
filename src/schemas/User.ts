@@ -5,11 +5,13 @@ const User: Schema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, 'Please enter an username'],
+        unique: [true, 'Username already in use'],
         validate: [validator.isLowercase, 'Username must be in lowercase']
     },
     email: {
         type: String,
         required: [true, 'Please enter an email address'],
+        unique: [true, 'Email already in use'],
         validate: [validator.isEmail, 'Please enter a valid email address']
     },
     password: {

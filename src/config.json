@@ -1,5 +1,0 @@
-{
-    "database_uri": "mongodb+srv://admin:0MaZgpFXw5cODLy9@xenon.qhtsg2q.mongodb.net/dev?retryWrites=true&w=majority",
-    "api_key": "0MaZgpFXw5cODLy9",
-    "port": 1000
-}

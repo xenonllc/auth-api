@@ -10,7 +10,7 @@ module.exports = async (req: Request, res: Response) => {
 
         // Send success message with data
         res.status(200).json({
-            status: 'sucess',
+            status: 'success',
             message: 'retrieved data',
             data: user
         })

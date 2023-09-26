@@ -42,6 +42,7 @@ import path from 'path'
             console.log(chalk.greenBright('✅ Connected to DB'));
         } catch (err) {
             // Log error msg
+            console.log(err);
             console.log(chalk.redBright('❌ Failed to connect to DB, Please check if the IP is listed in access list'));
         }
     }

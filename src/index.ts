@@ -1,10 +1,10 @@
 // Package Imports
 import express, { Express, Request, Response } from 'express'
 import dotenv from 'dotenv'
-import Server from './server';
+import cors from 'cors'
 
 // Module Imports
-import config from './config.json'
+import Server from './server'
 import { check_api_key } from './modules/emps';
 
 // Initialize dotenv
@@ -15,13 +15,17 @@ const app: Express = express();
 
 // Middleware
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(cors({
+    origin: ["*"],
+}))
 app.use(check_api_key)
 
 // Create new server
-const server = new Server(config.port, app);
+const server = new Server(Number(process.env.PORT), app);
 
 // Connect to DB
-server.connect_db(config.database_uri)
+server.connect_db(`${process.env.DB_URI}`)
 
 // Start Server
 server.start()

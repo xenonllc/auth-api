@@ -9,6 +9,7 @@ module.exports = async (req: Request, res: Response) => {
     const { body } = req
 
     try {
+
         // Get start time
         const starttime = new Date().getMilliseconds()
 

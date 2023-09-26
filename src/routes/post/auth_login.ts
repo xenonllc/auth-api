@@ -4,7 +4,6 @@ import jwt from 'jsonwebtoken'
 
 import User from '../../schemas/User'
 import { handle_error } from '../../modules/emps'
-import config from '../../config.json'
 
 module.exports = async (req: Request, res: Response) => {
 
@@ -22,7 +21,7 @@ module.exports = async (req: Request, res: Response) => {
         const auth = await bcrypt.compare(password, user.password);
 
         // generate JWT token
-        const token = jwt.sign({ id: user._id }, config.api_key, { expiresIn: '14d' });
+        const token = jwt.sign({ id: user._id }, `${process.env.API_KEY}`, { expiresIn: '14d' });
 
         // check if password is correct
         if (auth) return res.status(200).json({
