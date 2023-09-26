@@ -1,0 +1,7 @@
+import { Request, Response } from 'express'
+import User from '../../schemas/User'
+import { handle_error } from '../../modules/emps'
+
+module.exports = async (req: Request, res: Response) => {
+    
+}

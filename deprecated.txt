@@ -1,0 +1,39 @@
+    private async init_GET_routes () {
+        const files = await fs.readdirSync(path.join(__dirname, 'routes/GET'), 'utf-8')
+        
+        files.forEach( filename => {
+
+            // Recharacterize the route
+            const route: string = filename.split('_').join('/').split('=').join(':').split('.ts')[0]
+
+            // Import handler function
+            const handler = require(`./routes/GET/${filename}`)
+
+            // Set get handler
+            this.app.get(`/${route}`, handler)
+
+            // Log success message
+            console.log(chalk.greenBright(`✅ Loaded GET route - /${route}`));
+            
+        })
+    }
+
+    private async init_POST_routes () {
+        const files = await fs.readdirSync(path.join(__dirname, 'routes/POST'), 'utf-8')
+        
+        files.forEach( filename => {
+
+            // Recharacterize the route
+            const route: string = filename.split('_').join('/').split('=').join(':').split('.ts')[0]
+
+            // Import handler function
+            const handler = require(`./routes/POST/${filename}`)
+
+            // Set post handler
+            this.app.post(`/${route}`, handler)
+
+            // Log success message
+            console.log(chalk.greenBright(`✅ Loaded POST route - /${route}`));
+
+        })
+    }
